@@ -1,47 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   verif.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: skock <skock@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/28 13:56:41 by skock             #+#    #+#             */
-/*   Updated: 2024/12/14 17:37:43 by skock            ###   ########.fr       */
+/*   Created: 2024/12/14 10:41:28 by skock             #+#    #+#             */
+/*   Updated: 2024/12/14 17:42:30 by skock            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// void	ft_lstnew_and_fill(char **str)
-// {
-
-// }
-
-int	main(int ac, char **av)
+int ft_has_duplicates(char **av)
 {
-	char	**stock;
-
-		if (ac == 2)
-		{
-			stock = ft_split(av[1], ' ');
-			// ft_lstnew_and_fill(stock);
-		}
-
-	if (ft_limits(av) == 0)
-		return (0);
-	if (ft_has_duplicates(av))
-		return (0);
-	// if (ac == 2)
-	// 	ft_push_swap(stock);
-	// else if (ac > 2)
-	// 	ft_push_swap(av);
-	
-	
-	int i = 1;
+	int	i = 0;
 	while (av[i])
 	{
-		printf("%ld\n", ft_atoi(av[i]));
+		int j = i + 1;
+		while (av[j])
+		{
+			if (ft_strcmp(av[i], av[j]) == 0)
+				return (ft_error(), 1);
+			j++;
+		}
 		i++;
 	}
 	return (0);
+}
+
+int	ft_limits(char **argv)
+{
+	long	nb;
+	int		i;
+
+	i = 0;
+	while (argv[i])
+	{
+		nb = ft_atoi(argv[i]);
+		if (nb <= -2147483648 || nb > 2147483647)
+			return (ft_error(), 0);
+		i++;
+	}
+	return (1);
 }

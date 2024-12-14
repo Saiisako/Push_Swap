@@ -1,46 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: skock <skock@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/28 13:56:41 by skock             #+#    #+#             */
-/*   Updated: 2024/12/14 17:37:43 by skock            ###   ########.fr       */
+/*   Created: 2024/11/08 15:33:49 by skock             #+#    #+#             */
+/*   Updated: 2024/11/12 16:39:22 by skock            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-// void	ft_lstnew_and_fill(char **str)
-// {
-
-// }
-
-int	main(int ac, char **av)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	char	**stock;
+	size_t			i;
+	unsigned char	*str1;
+	unsigned char	*str2;
 
-		if (ac == 2)
-		{
-			stock = ft_split(av[1], ' ');
-			// ft_lstnew_and_fill(stock);
-		}
-
-	if (ft_limits(av) == 0)
+	str1 = (unsigned char *)s1;
+	str2 = (unsigned char *)s2;
+	if (n == 0)
 		return (0);
-	if (ft_has_duplicates(av))
-		return (0);
-	// if (ac == 2)
-	// 	ft_push_swap(stock);
-	// else if (ac > 2)
-	// 	ft_push_swap(av);
-	
-	
-	int i = 1;
-	while (av[i])
+	i = 0;
+	while (i < n)
 	{
-		printf("%ld\n", ft_atoi(av[i]));
+		if (str1[i] != str2[i])
+			return (str1[i] - str2[i]);
 		i++;
 	}
 	return (0);
