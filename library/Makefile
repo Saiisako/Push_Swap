@@ -13,7 +13,7 @@ SRCS	=	ft_isalnum.c ft_isprint.c ft_memcmp.c ft_putchar_fd.c ft_split.c\
 			ft_putstr_fd.c ft_strjoin.c ft_strmapi.c ft_strtrim.c ft_striteri.c\
 			ft_iswhitespace.c printf/ft_printf.c printf/printf_utils.c\
 			gnl/get_next_line.c gnl/get_next_line_utils.c\
-			ft_error.c\
+			ft_error.c ft_strcmp.c\
 
 OBJS = $(SRCS:.c=.o)
 
