@@ -6,13 +6,13 @@
 /*   By: skock <skock@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 13:35:23 by skock             #+#    #+#             */
-/*   Updated: 2024/12/14 13:36:25 by skock            ###   ########.fr       */
+/*   Updated: 2024/12/17 12:20:02 by skock            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_error()
+void	ft_error(void)
 {
 	ft_putstr_fd("Error \n", 2);
 	exit(EXIT_FAILURE);

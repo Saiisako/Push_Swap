@@ -3,7 +3,7 @@ NAME = push_swap
 LIBRARY_DIR = ./library
 LIBRARY = $(LIBRARY_DIR)/libft.a
 
-SRCS = push_swap.c verif.c
+SRCS = push_swap.c ft_list.c ft_rules.c
 
 OBJS = $(SRCS:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: skock <skock@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 14:13:04 by skock             #+#    #+#             */
-/*   Updated: 2024/11/12 16:39:42 by skock            ###   ########.fr       */
+/*   Updated: 2024/12/19 14:30:07 by skock            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static char	**ft_malloc_word(const char *str, char **new_str, char c)
 	while (str[i])
 	{
 		token = 0;
-		while (str[i] == c)
+		while (str[i] == c && str[i] != '	')
 			i++;
 		while (str[i] != c && str[i] != '\0')
 		{
