@@ -1,25 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   algo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: skock <skock@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/15 16:42:08 by skock             #+#    #+#             */
-/*   Updated: 2024/12/27 15:30:59 by skock            ###   ########.fr       */
+/*   Created: 2024/12/26 14:38:23 by skock             #+#    #+#             */
+/*   Updated: 2024/12/27 14:59:07 by skock            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "../push_swap.h"
 
-# include "../libft.h"
-
-int	ft_printf(const char *format, ...);
-int	ft_print_x(unsigned long nb, char *format);
-int	ft_print_c(char c);
-int	ft_print_s(char *str);
-int	ft_print_i_or_d(int nb);
-int	ft_print_u(unsigned int nb);
-
-#endif
+void	algo(t_list **lst_a, t_list **lst_b)
+{
+	// 5 2 1 6      8 4 3
+}

@@ -1,52 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list.c                                          :+:      :+:    :+:   */
+/*   list.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: skock <skock@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/15 12:03:09 by skock             #+#    #+#             */
-/*   Updated: 2024/12/21 05:35:27 by skock            ###   ########.fr       */
+/*   Created: 2024/12/26 11:41:04 by skock             #+#    #+#             */
+/*   Updated: 2024/12/27 16:48:27 by skock            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_lst_addfront(t_list **lst, long value, int index)
+void	lst_index_update(t_list **lst)
 {
-	t_list	*new_node;
 	t_list	*temp;
-	
-	new_node = ft_lstnew(value, index);
-	if (!new_node)
-		return ;
-	if (*lst == NULL)
-		*lst = new_node;
-	else
+	int		update;
+
+	update = 1;
+	temp = *lst;
+	while (temp)
 	{
-		temp = *lst;
-		while (temp)
-		{
-			temp->index = index + 1;
-			temp = temp->next;
-		}
-		new_node->next = *lst;
-		(*lst)->prev = new_node;
-		*lst = new_node;
+		temp->index = update;
+		temp = temp->next;
+		update++;
 	}
 }
 
-int	ft_has_duplicates(t_list *lst)
+int	has_duplicates(t_list *lst)
 {
 	t_list	*temp;
+	t_list	*free;
 
+	free = lst;
 	while (lst)
 	{
 		temp = lst->next;
 		while (temp)
 		{
 			if (temp->value == lst->value)
-				return (ft_error(), 1);
+			{
+				freelst(free);
+				return (1);
+			}
 			temp = temp->next;
 		}
 		lst = lst->next;
@@ -54,7 +50,7 @@ int	ft_has_duplicates(t_list *lst)
 	return (0);
 }
 
-t_list	*ft_lstnew(long value, int index)
+t_list	*lstnew(int value, int index)
 {
 	t_list	*new;
 
@@ -68,7 +64,7 @@ t_list	*ft_lstnew(long value, int index)
 	return (new);
 }
 
-void	ft_lst_addback(t_list **lst, t_list *new_node)
+void	lst_addback(t_list **lst, t_list *new_node)
 {
 	t_list	*temp;
 
@@ -86,15 +82,32 @@ void	ft_lst_addback(t_list **lst, t_list *new_node)
 	}
 }
 
-void	ft_lst_fill(t_list **lst, char **av, int start_index)
+int	lst_fill(t_list **lst, char **av, int start_index)
 {
 	int	i;
-
+	long	value;
 	i = start_index;
 	while (av[i])
 	{
-		ft_lst_addback(lst, ft_lstnew(ft_atoi(av[i]), i));
+		value = ft_atoi(*lst, av[i]);
+		if (value == ERROR)
+			return (1);
+		lst_addback(lst, lstnew(value, i));
 		i++;
 	}
-	ft_has_duplicates(*lst);
+	if (has_duplicates(*lst) == 1)
+		return (1);
+	return (0);
+}
+
+void	freelst(t_list *lst)
+{
+	t_list	*temp;
+	
+	while (lst)
+	{
+		temp = lst->next;
+		free(lst);
+		lst = temp;
+	}
 }

@@ -2,21 +2,21 @@ NAME = push_swap
 
 LIBRARY_DIR = ./library
 LIBRARY = $(LIBRARY_DIR)/libft.a
-
-SRCS = push_swap.c ft_list.c ft_rules.c
+FLAGS = -Wall -Werror -Wextra -g #-fsanitize=address
+SRCS = push_swap.c list.c instructions/push.c instructions/rotate.c instructions/reverse.c instructions/swap.c algo/algo_3.c algo/algo_5.c\
 
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBRARY)
-	cc -Wall -Wextra -Werror $(OBJS) $(LIBRARY) -o $(NAME)
+	cc $(FLAGS) $(OBJS) $(LIBRARY) -o $(NAME)
 
 $(LIBRARY):
 	make -C $(LIBRARY_DIR)
 
 .c.o:
-	cc -Wall -Wextra -Werror -c $< -o $@
+	cc $(FLAGS) -c $< -o $@
 
 clean:
 	$(RM) $(OBJS)

@@ -6,13 +6,14 @@
 /*   By: skock <skock@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 15:35:39 by skock             #+#    #+#             */
-/*   Updated: 2024/12/21 02:03:14 by skock            ###   ########.fr       */
+/*   Updated: 2024/12/27 16:55:17 by skock            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "../push_swap.h"
 
-int	ft_verif(long result, char *str)
+int	ft_verif(t_list *lst, long result, char *str)
 {
 	int	i;
 
@@ -20,45 +21,63 @@ int	ft_verif(long result, char *str)
 	while (str[i])
 	{
 		if (ft_isalpha(str[i]))
-			return (ft_error(), 0);
+		{
+			freelst(lst);
+			return (1);
+		}
 		i++;
 	}
 	if (result < INT_MIN || result > INT_MAX)
-		return (ft_error(), 0);
-	return (1);
-}
-
-int	ft_verif_hyphen(int next)
-{
-	if ((next == '-' || next == '+'))
-		return (ft_error(), 1);
+	{
+		freelst(lst);
+		return (1);
+	}
 	return (0);
 }
 
-long	ft_atoi(char *str)
+int	ft_verif_hyphen(t_list *lst, int next)
 {
-	long	result;
-	long	sign;
-	int		i;
+	if ((next == '-' || next == '+'))
+	{
+		freelst(lst);
+		return (1);
+	}
+	return (0);
+}
 
-	result = 0;
-	sign = 1;
+long	result(char *str, t_list *lst, long sign, long result)
+{
+	int	i;
+
 	i = 0;
 	while (ft_iswhitespace(str[i]) == 1 || str[i] == '0')
 		i++;
 	if (str[i] == '-' || str[i] == '+')
 	{
-		ft_verif_hyphen(str[i + 1]);
+		if (ft_verif_hyphen(lst, str[i + 1]) == 1)
+			return (ERROR);
 		if (str[i] == '-')
 			sign = -1;
 		i++;
 	}
 	while (ft_isdigit(str[i]))
 	{
-		ft_verif_hyphen(str[i + 1]);
+		if (ft_verif_hyphen(lst, str[i + 1]) == 1)
+			return (ERROR);
 		result = (result * 10) + (str[i] - '0');
 		i++;
 	}
-	ft_verif(result * sign, str);
+	if (ft_verif(lst, result * sign, str) == 1)
+		return (ERROR);
 	return (result * sign);
+}
+
+long	ft_atoi(t_list *lst, char *str)
+{
+	long	res;
+	long	sign;
+
+	res = 0;
+	sign = 1;
+	return (result(str, lst, sign, res));
 }
