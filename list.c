@@ -6,7 +6,7 @@
 /*   By: skock <skock@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 11:41:04 by skock             #+#    #+#             */
-/*   Updated: 2024/12/27 16:48:27 by skock            ###   ########.fr       */
+/*   Updated: 2024/12/31 10:43:07 by skock            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ t_list	*lstnew(int value, int index)
 		return (NULL);
 	new->value = value;
 	new->index = index;
+	new->pp = 0;
 	new->next = NULL;
 	new->prev = NULL;
 	return (new);
@@ -84,8 +85,9 @@ void	lst_addback(t_list **lst, t_list *new_node)
 
 int	lst_fill(t_list **lst, char **av, int start_index)
 {
-	int	i;
+	int		i;
 	long	value;
+
 	i = start_index;
 	while (av[i])
 	{
@@ -98,16 +100,4 @@ int	lst_fill(t_list **lst, char **av, int start_index)
 	if (has_duplicates(*lst) == 1)
 		return (1);
 	return (0);
-}
-
-void	freelst(t_list *lst)
-{
-	t_list	*temp;
-	
-	while (lst)
-	{
-		temp = lst->next;
-		free(lst);
-		lst = temp;
-	}
 }

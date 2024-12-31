@@ -6,17 +6,17 @@
 /*   By: skock <skock@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 14:37:40 by skock             #+#    #+#             */
-/*   Updated: 2024/12/27 08:42:04 by skock            ###   ########.fr       */
+/*   Updated: 2024/12/29 12:54:47 by skock            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void algo_3(t_list **lst_a)
+void	algo_3(t_list **lst_a)
 {
-	int first;
-	int second;
-	int last;
+	int	first;
+	int	second;
+	int	last;
 
 	first = (*lst_a)->value;
 	second = (*lst_a)->next->value;

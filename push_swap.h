@@ -6,7 +6,7 @@
 /*   By: skock <skock@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 13:56:38 by skock             #+#    #+#             */
-/*   Updated: 2024/12/27 16:09:54 by skock            ###   ########.fr       */
+/*   Updated: 2024/12/31 14:43:19 by skock            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,17 @@ typedef struct s_lst
 {
 	int				value;
 	int				index;
+	int				pp;
 	struct s_lst	*next;
 	struct s_lst	*prev;
 }					t_list;
+
+typedef struct s_object
+{
+	int	value;
+	int	index_target;
+}		t_object;
+
 
 //INSTRUCTIONS/PUSH
 void	pa(t_list **lst_a, t_list **lst_b);
@@ -41,15 +49,19 @@ void	sb(t_list *lst_b, bool print);
 void	ss(t_list *lst_a, t_list *lst_b);
 //LIST
 t_list	*lstnew(int value, int index);
+t_list	search_max(t_list *lst);
+t_list	search_min(t_list *lst);
 int		lst_fill(t_list **lst, char **av, int start_index);
+int		lst_size(t_list **lst);
 void	lst_addback(t_list **lst, t_list *new_node);
 void	lst_index_update(t_list **lst);
 void	freelst(t_list *lst);
 void	print_list(t_list *lst_a, t_list *lst_b);
 //ALGORITHMS
+int		bubblesort(t_list *lst, int len);
+int		check_sort(t_list *lst_a, int order);
 void	algo_3(t_list **lst_a);
 void	algo_5(t_list **lst_a, t_list **lst_b);
-
-int	lst_size(t_list **lst);
+void	algo(t_list **lst_a, t_list **lst_b);
 
 #endif

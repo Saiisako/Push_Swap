@@ -6,7 +6,7 @@
 /*   By: skock <skock@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 15:35:39 by skock             #+#    #+#             */
-/*   Updated: 2024/12/27 16:55:17 by skock            ###   ########.fr       */
+/*   Updated: 2024/12/30 17:54:11 by skock            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ long	result(char *str, t_list *lst, long sign, long result)
 			return (ERROR);
 		if (str[i] == '-')
 			sign = -1;
+		if (!str[i + 1])
+			return (ERROR);
 		i++;
 	}
 	while (ft_isdigit(str[i]))

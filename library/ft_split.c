@@ -6,24 +6,12 @@
 /*   By: skock <skock@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 14:13:04 by skock             #+#    #+#             */
-/*   Updated: 2024/12/27 16:16:04 by skock            ###   ########.fr       */
+/*   Updated: 2024/12/28 11:06:49 by skock            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-void	freetab(char **tab)
-{
-	int	i;
-	
-	i = 0;
-	while (tab[i])
-	{
-		free(tab[i]);
-		i++;
-	}
-	free(tab);
-}
+#include "../push_swap.h"
 
 int	char_is_separator(char c, char *charset)
 {

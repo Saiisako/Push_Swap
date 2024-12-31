@@ -6,15 +6,16 @@
 /*   By: skock <skock@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 14:38:10 by skock             #+#    #+#             */
-/*   Updated: 2024/12/27 14:47:49 by skock            ###   ########.fr       */
+/*   Updated: 2024/12/29 12:54:43 by skock            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-static t_list	search_min(t_list *lst)
+t_list	search_min(t_list *lst)
 {
 	t_list	min;
+
 	min = *lst;
 	while (lst)
 	{
@@ -25,9 +26,10 @@ static t_list	search_min(t_list *lst)
 	return (min);
 }
 
-static t_list	search_max(t_list *lst)
+t_list	search_max(t_list *lst)
 {
 	t_list	max;
+
 	max = *lst;
 	while (lst)
 	{
@@ -72,7 +74,7 @@ void	algo_5(t_list **lst_a, t_list **lst_b)
 {
 	t_list	min;
 	t_list	max;
-	
+
 	min = search_min(*lst_a);
 	max = search_max(*lst_a);
 	push_extrememum(lst_a, lst_b, min, max);
