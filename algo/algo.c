@@ -6,7 +6,7 @@
 /*   By: skock <skock@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 14:38:23 by skock             #+#    #+#             */
-/*   Updated: 2025/01/02 14:33:47 by skock            ###   ########.fr       */
+/*   Updated: 2025/01/02 16:59:32 by skock            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -229,10 +229,9 @@ void	algo(t_list **lst_a, t_list **lst_b)
 		pa(lst_a, lst_b);
 		if (is_lst_b_empty(*lst_b) == 1)
 		{
-			// while (check_sort(*lst_a, 1) != 1)
-			// 	rra(lst_a, true);
+			while (check_sort(*lst_a, 1) != 1)
+				rra(lst_a, true);
 			break ;
 		}
 	}
-	print_list(*lst_a, *lst_b);
 }

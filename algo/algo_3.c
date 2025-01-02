@@ -6,7 +6,7 @@
 /*   By: skock <skock@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 14:37:40 by skock             #+#    #+#             */
-/*   Updated: 2024/12/29 12:54:47 by skock            ###   ########.fr       */
+/*   Updated: 2025/01/02 15:58:29 by skock            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,5 @@ void	algo_3(t_list **lst_a)
 	}
 	else if (second < last && last < first)
 		ra(lst_a, true);
+	lst_index_update(lst_a);
 }
