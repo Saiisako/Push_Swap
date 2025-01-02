@@ -6,7 +6,7 @@
 /*   By: skock <skock@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 13:56:38 by skock             #+#    #+#             */
-/*   Updated: 2024/12/31 14:43:19 by skock            ###   ########.fr       */
+/*   Updated: 2025/01/02 12:35:07 by skock            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,11 @@ typedef struct s_lst
 	int				value;
 	int				index;
 	int				pp;
+	int				target_value;
+	int				target_index;
 	struct s_lst	*next;
 	struct s_lst	*prev;
 }					t_list;
-
-typedef struct s_object
-{
-	int	value;
-	int	index_target;
-}		t_object;
-
 
 //INSTRUCTIONS/PUSH
 void	pa(t_list **lst_a, t_list **lst_b);

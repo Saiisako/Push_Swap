@@ -6,34 +6,37 @@
 /*   By: skock <skock@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 13:56:41 by skock             #+#    #+#             */
-/*   Updated: 2024/12/30 17:51:20 by skock            ###   ########.fr       */
+/*   Updated: 2025/01/02 14:37:17 by skock            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	check_sort(t_list *lst_a, int order)
+int check_sort(t_list *lst_a, int order)
 {
-	t_list	*temp;
+    t_list *temp;
 
-	temp = lst_a->next;
-	while (lst_a->next)
+    temp = lst_a->next;  // initialisation de temp correctement
+    while (lst_a->next)  // tant que lst_a->next existe
+    {
+        if (lst_a->value > temp->value)
+            return (0);  // si l'ordre est brisé, retourne 0
+        lst_a = lst_a->next;
+        temp = temp->next;  // déplace temp au même rythme que lst_a
+    }
+
+    // vérification de l'ordre
+    if (order == 0) 
 	{
-		if ((lst_a->value) > (temp->value))
-			return (0);
-		lst_a = lst_a->next;
-		temp = temp->next;
-	}
-	if (order == 0)
-	{
-		freelst(lst_a);
-		exit(1);
-	}
-	if (order == 1)
-		return (1);
-	return (0);
-	
+        freelst(lst_a);  // attention, lst_a est modifié, cela pourrait causer un problème
+        exit(1);
+    }
+
+    if (order == 1)
+        return (1);  // liste triée dans l'ordre croissant
+    return (0);  // en cas de problème, retourne 0
 }
+
 
 int	lst_size(t_list **lst)
 {
