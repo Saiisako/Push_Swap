@@ -6,7 +6,7 @@
 /*   By: skock <skock@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 13:56:38 by skock             #+#    #+#             */
-/*   Updated: 2025/01/02 12:35:07 by skock            ###   ########.fr       */
+/*   Updated: 2025/01/02 18:35:20 by skock            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,18 @@ int		lst_size(t_list **lst);
 void	lst_addback(t_list **lst, t_list *new_node);
 void	lst_index_update(t_list **lst);
 void	freelst(t_list *lst);
-void	print_list(t_list *lst_a, t_list *lst_b);
 //ALGORITHMS
+t_list	*isworth(t_list **lst_b);
 int		bubblesort(t_list *lst, int len);
 int		check_sort(t_list *lst_a, int order);
+int		verif_value(t_list *lst, int median);
 void	algo_3(t_list **lst_a);
 void	algo_5(t_list **lst_a, t_list **lst_b);
 void	algo(t_list **lst_a, t_list **lst_b);
+void	update_target_index(t_list *min_node, t_list *lst_a, bool rra, bool ra);
+void	update_min_index(t_list *min_node, t_list *lst_b, bool rra, bool ra);
+void	update_global_pool_price(t_list **lst_a, t_list **lst_b);
+void	update_obj(t_list **lst_a, t_list **lst_b);
+void	pb_modified(t_list **lst_a, t_list **lst_b, int median);
 
 #endif

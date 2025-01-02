@@ -6,7 +6,7 @@
 /*   By: skock <skock@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 12:14:41 by skock             #+#    #+#             */
-/*   Updated: 2024/12/31 14:42:57 by skock            ###   ########.fr       */
+/*   Updated: 2025/01/02 18:39:19 by skock            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	*bubblesort_algo(int *tab, int len)
 
 	j = 0;
 	swapped = true;
-	while(swapped)
+	while (swapped)
 	{
 		swapped = false;
 		i = 0;
@@ -53,7 +53,7 @@ int	bubblesort(t_list *lst, int len)
 		return (0);
 	temp = lst;
 	i = 0;
-	while(temp)
+	while (temp)
 	{
 		tab[i] = temp->value;
 		temp = temp->next;
@@ -63,5 +63,5 @@ int	bubblesort(t_list *lst, int len)
 	tab = bubblesort_algo(tab, len);
 	median = tab[len / 2 - 1];
 	free(tab);
-	return(median);
+	return (median);
 }
