@@ -6,7 +6,7 @@
 /*   By: skock <skock@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 13:56:41 by skock             #+#    #+#             */
-/*   Updated: 2025/01/04 18:19:37 by skock            ###   ########.fr       */
+/*   Updated: 2025/01/04 18:31:28 by skock            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ int	check_sort(t_list *lst_a, int order)
 	if (order == 0)
 	{
 		freelst(free);
-		freelst(lst_a);
 		exit(1);
 	}
 	if (order == 1)
@@ -80,11 +79,15 @@ int	main(int ac, char **av)
 			freetab(ntr);
 			return (ft_error());
 		}
+		freetab(ntr);
 	}
 	if (ac > 2)
 		if (lst_fill(&lst_a, av, 1) == 1)
 			return (ft_error());
-	algo_all(&lst_a, &lst_b);
-	freelst(lst_a);
-	freelst(lst_b);
+	if (lst_a)
+	{
+		algo_all(&lst_a, &lst_b);
+		freelst(lst_a);
+		freelst(lst_b);
+	}
 }
