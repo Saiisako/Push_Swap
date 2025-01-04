@@ -12,26 +12,6 @@
 
 #include "push_swap.h"
 
-void	print_list(t_list *lst_a, t_list *lst_b)
-{
-	t_list	*tmp;
-
-	tmp = lst_a;
-	ft_printf("liste A : \n\n");
-	while (tmp)
-	{
-		printf("node [%d]: value = %d\n", tmp->index, tmp->value);
-		tmp = tmp->next;
-	}
-	tmp = lst_b;
-	ft_printf("liste B : \n\n");
-	while (tmp)
-	{
-		printf("node [%d]: value = %d\n", tmp->index, tmp->value);
-		tmp = tmp->next;
-	}
-}
-
 int	check_sort(t_list *lst_a, int order)
 {
 	t_list	*temp;
@@ -41,7 +21,7 @@ int	check_sort(t_list *lst_a, int order)
 	{
 		if (lst_a->value > temp->value)
 		{
-			printf("KO\n");
+			ft_printf("KO\n");
 			return (0);
 		}
 		lst_a = lst_a->next;
@@ -69,30 +49,6 @@ int	lst_size(t_list **lst)
 	return (i);
 }
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
-{
-	size_t	i;
-
-	i = 0;
-	if (n == 0)
-		return (0);
-	while (s1[i] && s2[i] && i < n - 1)
-	{
-		if (s1[i] != s2[i])
-			return (s1[i] - s2[i]);
-		i++;
-	}
-	return (s1[i] - s2[i]);
-}
-int ft_strcmp(const char *s1, const char *s2)
-{
-	while (*s1 && (*s1 == *s2)) {
-		s1++;
-		s2++;
-	}
-	return (unsigned char)*s1 - (unsigned char)*s2;
-}
-
 static void	checker_recup_arguments(t_list **lst_a, t_list **lst_b, char *gnl)
 {
 	if (ft_strcmp(gnl, "sa\n") == 0)
@@ -102,12 +58,9 @@ static void	checker_recup_arguments(t_list **lst_a, t_list **lst_b, char *gnl)
 	else if (ft_strcmp(gnl, "ss\n") == 0)
 		ss(*lst_a, *lst_b, false);
 	else if (ft_strcmp(gnl, "pa\n") == 0)
-	{
-		printf("do pa\n");
 		pa(lst_a, lst_b, false);
-	}
 	else if (ft_strcmp(gnl, "pb\n") == 0)
-		pb(lst_b, lst_b, false);
+		pb(lst_a, lst_b, false);
 	else if (ft_strcmp(gnl, "rra\n") == 0)
 		rra(lst_a, false);
 	else if (ft_strcmp(gnl, "rrb\n") == 0)
@@ -124,13 +77,24 @@ static void	checker_recup_arguments(t_list **lst_a, t_list **lst_b, char *gnl)
 		ft_error();
 }
 
+void	recup_arg(t_list **lst_a, t_list **lst_b, char *gnl)
+{
+	while (1)
+	{
+		gnl = get_next_line(0);
+		if (!gnl)
+			break ;
+		checker_recup_arguments(lst_a, lst_b, gnl);
+		free(gnl);
+	}
+}
+
 int	main(int ac, char **av)
 {
 	t_list	*lst_a;
 	t_list	*lst_b;
 	char	**ntr;
 	char	*gnl;
-
 
 	lst_a = NULL;
 	lst_b = NULL;
@@ -146,17 +110,9 @@ int	main(int ac, char **av)
 	if (ac > 2)
 		if (lst_fill(&lst_a, av, 1) == 1)
 			return (ft_error());
-	while (1)
-	{
-		gnl = get_next_line(0);
-		if (!gnl)
-			break ;
-		checker_recup_arguments(&lst_a, &lst_b, gnl);
-		free(gnl);
-		print_list(lst_a, lst_b);
-	}
+	gnl = NULL;
+	recup_arg(&lst_a, &lst_b, gnl);
 	check_sort(lst_a, 2);
 	freelst(lst_a);
 	freelst(lst_b);
 }
-

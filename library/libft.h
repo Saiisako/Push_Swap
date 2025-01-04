@@ -6,7 +6,7 @@
 /*   By: skock <skock@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 15:21:24 by skock             #+#    #+#             */
-/*   Updated: 2025/01/04 13:25:28 by skock            ###   ########.fr       */
+/*   Updated: 2025/01/04 16:38:19 by skock            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int		ft_isalnum(int c);
 int		ft_isalpha(int c);
 int		ft_isascii(int c);
 int		ft_isdigit(char c);
+int		ft_strcmp(const char *s1, const char *s2);
 int		ft_iswhitespace(int c);
 int		ft_error(void);
 char	**ft_split(char *str, char *charset);
