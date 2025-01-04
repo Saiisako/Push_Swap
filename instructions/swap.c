@@ -6,7 +6,7 @@
 /*   By: skock <skock@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 20:13:28 by skock             #+#    #+#             */
-/*   Updated: 2024/12/26 11:33:37 by skock            ###   ########.fr       */
+/*   Updated: 2025/01/04 12:50:22 by skock            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,10 @@ void	sb(t_list *lst_b, bool print)
 		ft_printf("sb\n");
 }
 
-void	ss(t_list *lst_a, t_list *lst_b)
+void	ss(t_list *lst_a, t_list *lst_b, bool print)
 {
 	sa(lst_a, false);
 	sb(lst_b, false);
-	ft_printf("ss\n");
+	if (print == true)
+		ft_printf("ss\n");
 }

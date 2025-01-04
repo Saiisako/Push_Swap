@@ -6,7 +6,7 @@
 /*   By: skock <skock@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 11:22:12 by skock             #+#    #+#             */
-/*   Updated: 2024/12/30 12:07:32 by skock            ###   ########.fr       */
+/*   Updated: 2025/01/04 12:45:33 by skock            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	pa(t_list **lst_a, t_list **lst_b)
 {
 	t_list	*temp;
 
-	if (!*lst_b)
+	if (lst_b == NULL || !*lst_b)
 		return ;
 	temp = *lst_b;
 	*lst_b = (*lst_b)->next;
@@ -33,7 +33,7 @@ void	pb(t_list **lst_a, t_list **lst_b)
 {
 	t_list	*temp;
 
-	if (!*lst_a)
+	if (lst_a == NULL || !*lst_a)
 		return ;
 	temp = *lst_a;
 	*lst_a = (*lst_a)->next;

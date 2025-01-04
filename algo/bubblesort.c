@@ -6,11 +6,11 @@
 /*   By: skock <skock@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 12:14:41 by skock             #+#    #+#             */
-/*   Updated: 2025/01/02 18:39:19 by skock            ###   ########.fr       */
+/*   Updated: 2025/01/04 11:33:47 by skock            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 static int	*bubblesort_algo(int *tab, int len)
 {

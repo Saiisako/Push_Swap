@@ -4,13 +4,13 @@ LIBRARY_DIR = ./library
 LIBRARY = $(LIBRARY_DIR)/libft.a
 FLAGS = -Wall -Werror -Wextra -g #-fsanitize=address
 
-SRCS =	push_swap.c list.c free.c bubblesort.c \
+SRCS =	push_swap.c utils/free.c utils/list.c \
 		instructions/push.c instructions/rotate.c instructions/reverse.c instructions/swap.c \
-		algo/algo.c algo/algo_3.c algo/algo_5.c algo/algo_update.c algo/algo_utils.c
+		algo/algo.c algo/algo_3.c algo/algo_5.c algo/algo_update.c algo/algo_utils.c algo/bubblesort.c\
 
-BONUS_SRCS =	checker.c list.c free.c bubblesort.c \
+BONUS_SRCS =	checker.c utils/free.c utils/list.c \
 				instructions/push.c instructions/rotate.c instructions/reverse.c instructions/swap.c \
-				algo/algo.c algo/algo_3.c algo/algo_5.c algo/algo_update.c algo/algo_utils.c
+				algo/algo.c algo/algo_3.c algo/algo_5.c algo/algo_update.c algo/algo_utils.c algo/bubblesort.c\
 
 OBJS = $(SRCS:.c=.o)
 BONUS_OBJS = $(BONUS_SRCS:.c=.o)

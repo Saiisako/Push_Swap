@@ -6,11 +6,11 @@
 /*   By: skock <skock@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 11:41:04 by skock             #+#    #+#             */
-/*   Updated: 2024/12/31 10:43:07 by skock            ###   ########.fr       */
+/*   Updated: 2025/01/04 11:33:42 by skock            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 void	lst_index_update(t_list **lst)
 {

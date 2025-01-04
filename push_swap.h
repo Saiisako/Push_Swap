@@ -6,7 +6,7 @@
 /*   By: skock <skock@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 13:56:38 by skock             #+#    #+#             */
-/*   Updated: 2025/01/02 18:35:20 by skock            ###   ########.fr       */
+/*   Updated: 2025/01/04 12:49:56 by skock            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,15 @@ void	pb(t_list **lst_a, t_list **lst_b);
 //INSTRUCTIONS/REVERSE
 void	rra(t_list **lst_a, bool print);
 void	rrb(t_list **lst_b, bool print);
-void	rrr(t_list **lst_a, t_list **lst_b);
+void	rrr(t_list **lst_a, t_list **lst_b, bool print);
 //INSTRUCTIONS/ROTATE
 void	ra(t_list **lst_a, bool print);
 void	rb(t_list **lst_b, bool print);
-void	rr(t_list **lst_a, t_list **lst_b);
+void	rr(t_list **lst_a, t_list **lst_b, bool print);
 //INSTRUCTIONS/SWAP
 void	sa(t_list *lst_a, bool print);
 void	sb(t_list *lst_b, bool print);
-void	ss(t_list *lst_a, t_list *lst_b);
+void	ss(t_list *lst_a, t_list *lst_b, bool print);
 //LIST
 t_list	*lstnew(int value, int index);
 t_list	search_max(t_list *lst);

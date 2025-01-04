@@ -6,7 +6,7 @@
 /*   By: skock <skock@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 15:21:24 by skock             #+#    #+#             */
-/*   Updated: 2024/12/27 16:37:55 by skock            ###   ########.fr       */
+/*   Updated: 2025/01/04 13:25:28 by skock            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <limits.h>
 # include <fcntl.h>
 # include "printf/ft_printf.h"
+# include "gnl/get_next_line.h"
 # define ERROR 2147483648
 
 struct					s_lst;

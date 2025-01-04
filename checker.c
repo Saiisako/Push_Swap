@@ -12,6 +12,26 @@
 
 #include "push_swap.h"
 
+void	print_list(t_list *lst_a, t_list *lst_b)
+{
+	t_list	*tmp;
+
+	tmp = lst_a;
+	ft_printf("liste A : \n\n");
+	while (tmp)
+	{
+		printf("node [%d]: value = %d\n", tmp->index, tmp->value);
+		tmp = tmp->next;
+	}
+	tmp = lst_b;
+	ft_printf("liste B : \n\n");
+	while (tmp)
+	{
+		printf("node [%d]: value = %d\n", tmp->index, tmp->value);
+		tmp = tmp->next;
+	}
+}
+
 int	check_sort(t_list *lst_a, int order)
 {
 	t_list	*temp;
@@ -20,23 +40,17 @@ int	check_sort(t_list *lst_a, int order)
 	while (lst_a->next)
 	{
 		if (lst_a->value > temp->value)
+		{
+			printf("KO\n");
 			return (0);
+		}
 		lst_a = lst_a->next;
 		temp = temp->next;
-	}
-	if (order == 0)
-	{
-		freelst(lst_a);
-		exit(1);
 	}
 	if (order == 1)
 		return (1);
 	if (order == 2)
-	{
-		freelst(lst_a);
 		ft_printf("OK\n");
-		exit(1);
-	}
 	return (0);
 }
 
@@ -70,32 +84,43 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	}
 	return (s1[i] - s2[i]);
 }
-
-static void	checker_recup_arguments(t_list **lst_a, t_list **lst_b, char *temp)
+int ft_strcmp(const char *s1, const char *s2)
 {
-	read(0, temp, 4);
-	if (ft_strncmp(temp, "sa", 2) == 0)
+	while (*s1 && (*s1 == *s2)) {
+		s1++;
+		s2++;
+	}
+	return (unsigned char)*s1 - (unsigned char)*s2;
+}
+
+static void	checker_recup_arguments(t_list **lst_a, t_list **lst_b)
+{
+	char *gnl = get_next_line(0);
+	if (ft_strcmp(gnl, "sa\n") == 0)
 		sa(*lst_a, false);
-	else if (ft_strncmp(temp, "sb", 2) == 0)
+	else if (ft_strcmp(gnl, "sb\n") == 0)
 		sb(*lst_b, false);
-	else if (ft_strncmp(temp, "ss", 2) == 0)
-		ss(*lst_a, *lst_b);
-	else if (ft_strncmp(temp, "pa", 2) == 0)
+	else if (ft_strcmp(gnl, "ss\n") == 0)
+		ss(*lst_a, *lst_b, false);
+	else if (ft_strcmp(gnl, "pa\n") == 0)
 		pa(lst_a, false);
-	else if (ft_strncmp(temp, "pb", 2) == 0)
+	else if (ft_strcmp(gnl, "pb\n") == 0)
 		pb(lst_b, false);
-	else if (ft_strncmp(temp, "ra", 2) == 0)
-		ra(lst_a, false);
-	else if (ft_strncmp(temp, "rb", 2) == 0)
-		rb(lst_b, false);
-	else if (ft_strncmp(temp, "rr", 2) == 0)
-		rr(lst_a, lst_b);
-	else if (ft_strncmp(temp, "rra", 3) == 0)
+	else if (ft_strcmp(gnl, "rra\n") == 0)
 		rra(lst_a, false);
-	else if (ft_strncmp(temp, "rrb", 3) == 0)
+	else if (ft_strcmp(gnl, "rrb\n") == 0)
 		rrb(lst_b, false);
-	else if (ft_strncmp(temp, "rrr", 3) == 0)
-		rrr(lst_a, lst_b);
+	else if (ft_strcmp(gnl, "rrr\n") == 0)
+		rrr(lst_a, lst_b, false);
+	else if (ft_strcmp(gnl, "ra\n") == 0)
+		ra(lst_a, false);
+	else if (ft_strcmp(gnl, "rb\n") == 0)
+		rb(lst_b, false);
+	else if (ft_strcmp(gnl, "rr\n") == 0)
+		rr(lst_a, lst_b, false);
+	else
+		ft_error();
+	free(gnl);
 }
 
 int	main(int ac, char **av)
@@ -103,7 +128,7 @@ int	main(int ac, char **av)
 	t_list	*lst_a;
 	t_list	*lst_b;
 	char	**ntr;
-	char	temp[4];
+
 
 	lst_a = NULL;
 	lst_b = NULL;
@@ -121,10 +146,12 @@ int	main(int ac, char **av)
 			return (ft_error());
 	while (1)
 	{
-		checker_recup_arguments(&lst_a, &lst_b, temp);
-		if (check_sort(lst_a, 2) == 1)
+		checker_recup_arguments(&lst_a, &lst_b);
+		if (get_next_line(0) == NULL)
 			break ;
 	}
+	check_sort(lst_a, 2);
 	freelst(lst_a);
 	freelst(lst_b);
 }
+

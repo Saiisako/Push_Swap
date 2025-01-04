@@ -50,9 +50,10 @@ void	rb(t_list **lst_b, bool print)
 		ft_printf("rb\n");
 }
 
-void	rr(t_list **lst_a, t_list **lst_b)
+void	rr(t_list **lst_a, t_list **lst_b, bool print)
 {
 	ra(lst_a, false);
 	rb(lst_b, false);
-	ft_printf("rr\n");
+	if (print == true)
+		ft_printf("rr\n");
 }
