@@ -36,7 +36,7 @@ int		ft_isdigit(char c);
 int		ft_strcmp(const char *s1, const char *s2);
 int		ft_iswhitespace(int c);
 int		ft_error(void);
-char	**ft_split(char *str, char *charset);
+char	**ft_split(char const *s, char c);
 char	*ft_strdup(const char *s);
 char	*ft_itoa(int n);
 void	*ft_calloc(size_t nmemb, size_t size);

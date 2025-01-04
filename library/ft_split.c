@@ -6,94 +6,112 @@
 /*   By: skock <skock@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 14:13:04 by skock             #+#    #+#             */
-/*   Updated: 2024/12/28 11:06:49 by skock            ###   ########.fr       */
+/*   Updated: 2024/11/12 16:39:42 by skock            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "../push_swap.h"
 
-int	char_is_separator(char c, char *charset)
+static char	**ft_free_all(char **new_str, int j)
 {
-	int	i;
-
-	i = 0;
-	while (charset[i] != '\0')
-	{
-		if (c == charset[i])
-			return (1);
-		i++;
-	}
-	if (c == '\0')
-		return (1);
-	return (0);
+	while (j > 0)
+		free(new_str[--j]);
+	free(new_str);
+	return (NULL);
 }
 
-int	count_words(char *str, char *charset)
+static int	ft_count_word(const char *s, char c)
 {
 	int	i;
-	int	words;
-
-	words = 0;
-	i = 0;
-	while (str[i] != '\0')
-	{
-		if (char_is_separator(str[i + 1], charset) == 1
-			&& char_is_separator(str[i], charset) == 0)
-			words++;
-		i++;
-	}
-	return (words);
-}
-
-void	write_word(char *dest, char *from, char *charset)
-{
-	int	i;
+	int	count;
+	int	in_word;
 
 	i = 0;
-	while (char_is_separator(from[i], charset) == 0)
+	count = 0;
+	in_word = 0;
+	while (s[i])
 	{
-		dest[i] = from[i];
+		if (s[i] != c && in_word == 0)
+		{
+			in_word = 1;
+			count++;
+		}
+		else if (s[i] == c)
+			in_word = 0;
 		i++;
 	}
-	dest[i] = '\0';
+	return (count);
 }
 
-void	write_split(char **split, char *str, char *charset)
+static char	**ft_malloc_word(const char *str, char **new_str, char c)
 {
 	int	i;
 	int	j;
-	int	word;
+	int	token;
 
-	word = 0;
 	i = 0;
-	while (str[i] != '\0')
+	j = 0;
+	while (str[i])
 	{
-		if (char_is_separator(str[i], charset) == 1)
+		token = 0;
+		while (str[i] == c)
 			i++;
-		else
+		while (str[i] != c && str[i] != '\0')
 		{
-			j = 0;
-			while (char_is_separator(str[i + j], charset) == 0)
-				j++;
-			split[word] = (char *)malloc(sizeof(char) * (j + 1));
-			write_word(split[word], str + i, charset);
-			i += j;
-			word++;
+			token++;
+			i++;
+		}
+		if (token > 0)
+		{
+			new_str[j] = ft_calloc((token + 1), sizeof(char));
+			if (!new_str[j])
+				return (ft_free_all(new_str, j));
+			j++;
 		}
 	}
+	return (new_str);
 }
 
-char	**ft_split(char *str, char *charset)
+static char	**ft_put(const char *str, char **new_str, char c)
 {
-	char	**res;
-	int		words;
+	int	i;
+	int	j;
+	int	k;
 
-	words = count_words(str, charset);
-	res = (char **)malloc(sizeof(char *) * (words + 1));
-	if (!res)
+	i = 0;
+	j = 0;
+	while (str[i])
+	{
+		while (str[i] == c)
+			i++;
+		if (str[i] != '\0')
+		{
+			k = 0;
+			while (str[i] != c && str[i] != '\0')
+			{
+				new_str[j][k++] = str[i++];
+			}
+			new_str[j][k] = '\0';
+			j++;
+		}
+	}
+	new_str[j] = NULL;
+	return (new_str);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	char	**new_str;
+	int		word_nb;
+
+	if (!s)
 		return (NULL);
-	res[words] = 0;
-	write_split(res, str, charset);
-	return (res);
+	word_nb = ft_count_word(s, c);
+	new_str = malloc((word_nb + 1) * sizeof(char *));
+	if (!new_str)
+		return (NULL);
+	if (!ft_malloc_word(s, new_str, c))
+		return (NULL);
+	new_str = ft_put(s, new_str, c);
+	return (new_str);
 }

@@ -6,7 +6,7 @@
 /*   By: skock <skock@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 13:56:41 by skock             #+#    #+#             */
-/*   Updated: 2025/01/04 15:00:29 by skock            ###   ########.fr       */
+/*   Updated: 2025/01/04 18:19:37 by skock            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,9 @@ void	algo_all(t_list **lst_a, t_list **lst_b)
 int	check_sort(t_list *lst_a, int order)
 {
 	t_list	*temp;
+	t_list	*free;
 
+	free = lst_a;
 	temp = lst_a->next;
 	while (lst_a->next)
 	{
@@ -37,6 +39,7 @@ int	check_sort(t_list *lst_a, int order)
 	}
 	if (order == 0)
 	{
+		freelst(free);
 		freelst(lst_a);
 		exit(1);
 	}
@@ -68,9 +71,10 @@ int	main(int ac, char **av)
 
 	lst_a = NULL;
 	lst_b = NULL;
+
 	if (ac == 2)
 	{
-		ntr = ft_split(av[1], " 	");
+		ntr = ft_split(av[1], ' ');
 		if (lst_fill(&lst_a, ntr, 0) == 1)
 		{
 			freetab(ntr);
