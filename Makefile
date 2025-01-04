@@ -2,7 +2,7 @@ NAME = push_swap
 BONUS_NAME = checker
 LIBRARY_DIR = ./library
 LIBRARY = $(LIBRARY_DIR)/libft.a
-FLAGS = -Wall -Werror -Wextra -g #-fsanitize=address
+FLAGS = -Wall -Wextra -Werror #-g #-fsanitize=address
 
 SRCS =	push_swap.c utils/free.c utils/list.c \
 		instructions/push.c instructions/rotate.c instructions/reverse.c instructions/swap.c \
