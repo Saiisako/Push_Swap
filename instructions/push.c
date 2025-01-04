@@ -6,13 +6,13 @@
 /*   By: skock <skock@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 11:22:12 by skock             #+#    #+#             */
-/*   Updated: 2025/01/04 12:45:33 by skock            ###   ########.fr       */
+/*   Updated: 2025/01/04 15:19:44 by skock            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	pa(t_list **lst_a, t_list **lst_b)
+void	pa(t_list **lst_a, t_list **lst_b, bool print)
 {
 	t_list	*temp;
 
@@ -26,10 +26,11 @@ void	pa(t_list **lst_a, t_list **lst_b)
 	*lst_a = temp;
 	lst_index_update(lst_a);
 	lst_index_update(lst_b);
-	ft_printf("pa\n");
+	if (print == true)
+		ft_printf("pa\n");
 }
 
-void	pb(t_list **lst_a, t_list **lst_b)
+void	pb(t_list **lst_a, t_list **lst_b, bool print)
 {
 	t_list	*temp;
 
@@ -45,5 +46,6 @@ void	pb(t_list **lst_a, t_list **lst_b)
 		(*lst_b)->next->prev = *lst_b;
 	lst_index_update(lst_a);
 	lst_index_update(lst_b);
-	ft_printf("pb\n");
+	if (print == true)
+		ft_printf("pb\n");
 }

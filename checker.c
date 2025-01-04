@@ -93,9 +93,8 @@ int ft_strcmp(const char *s1, const char *s2)
 	return (unsigned char)*s1 - (unsigned char)*s2;
 }
 
-static void	checker_recup_arguments(t_list **lst_a, t_list **lst_b)
+static void	checker_recup_arguments(t_list **lst_a, t_list **lst_b, char *gnl)
 {
-	char *gnl = get_next_line(0);
 	if (ft_strcmp(gnl, "sa\n") == 0)
 		sa(*lst_a, false);
 	else if (ft_strcmp(gnl, "sb\n") == 0)
@@ -103,9 +102,12 @@ static void	checker_recup_arguments(t_list **lst_a, t_list **lst_b)
 	else if (ft_strcmp(gnl, "ss\n") == 0)
 		ss(*lst_a, *lst_b, false);
 	else if (ft_strcmp(gnl, "pa\n") == 0)
-		pa(lst_a, false);
+	{
+		printf("do pa\n");
+		pa(lst_a, lst_b, false);
+	}
 	else if (ft_strcmp(gnl, "pb\n") == 0)
-		pb(lst_b, false);
+		pb(lst_b, lst_b, false);
 	else if (ft_strcmp(gnl, "rra\n") == 0)
 		rra(lst_a, false);
 	else if (ft_strcmp(gnl, "rrb\n") == 0)
@@ -120,7 +122,6 @@ static void	checker_recup_arguments(t_list **lst_a, t_list **lst_b)
 		rr(lst_a, lst_b, false);
 	else
 		ft_error();
-	free(gnl);
 }
 
 int	main(int ac, char **av)
@@ -128,6 +129,7 @@ int	main(int ac, char **av)
 	t_list	*lst_a;
 	t_list	*lst_b;
 	char	**ntr;
+	char	*gnl;
 
 
 	lst_a = NULL;
@@ -146,9 +148,12 @@ int	main(int ac, char **av)
 			return (ft_error());
 	while (1)
 	{
-		checker_recup_arguments(&lst_a, &lst_b);
-		if (get_next_line(0) == NULL)
+		gnl = get_next_line(0);
+		if (!gnl)
 			break ;
+		checker_recup_arguments(&lst_a, &lst_b, gnl);
+		free(gnl);
+		print_list(lst_a, lst_b);
 	}
 	check_sort(lst_a, 2);
 	freelst(lst_a);

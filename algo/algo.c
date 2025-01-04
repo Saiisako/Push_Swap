@@ -6,7 +6,7 @@
 /*   By: skock <skock@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 14:38:23 by skock             #+#    #+#             */
-/*   Updated: 2025/01/02 18:46:04 by skock            ###   ########.fr       */
+/*   Updated: 2025/01/04 15:21:32 by skock            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	send_smaller(t_list **lst_a, t_list **lst_b, int median)
 		if (temp->value >= median)
 			ra(lst_a, true);
 		else
-			pb(lst_a, lst_b);
+			pb(lst_a, lst_b, true);
 	}
 }
 
@@ -50,7 +50,7 @@ void	rotate_in_a(t_list **lst_a, t_list **lst_b, t_list *min_node)
 			update_target_index(min_node, *lst_a, true, false);
 		}
 	}
-	pa(lst_a, lst_b);
+	pa(lst_a, lst_b, true);
 }
 
 void	global_rotate(t_list **lst_a, t_list **lst_b)

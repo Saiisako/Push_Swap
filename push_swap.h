@@ -6,7 +6,7 @@
 /*   By: skock <skock@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 13:56:38 by skock             #+#    #+#             */
-/*   Updated: 2025/01/04 12:49:56 by skock            ###   ########.fr       */
+/*   Updated: 2025/01/04 15:19:56 by skock            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ typedef struct s_lst
 }					t_list;
 
 //INSTRUCTIONS/PUSH
-void	pa(t_list **lst_a, t_list **lst_b);
-void	pb(t_list **lst_a, t_list **lst_b);
+void	pa(t_list **lst_a, t_list **lst_b, bool print);
+void	pb(t_list **lst_a, t_list **lst_b, bool print);
 //INSTRUCTIONS/REVERSE
 void	rra(t_list **lst_a, bool print);
 void	rrb(t_list **lst_b, bool print);

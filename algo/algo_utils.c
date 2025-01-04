@@ -6,7 +6,7 @@
 /*   By: skock <skock@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 18:30:48 by skock             #+#    #+#             */
-/*   Updated: 2025/01/02 18:44:12 by skock            ###   ########.fr       */
+/*   Updated: 2025/01/04 15:21:45 by skock            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ void	pb_modified(t_list **lst_a, t_list **lst_b, int median)
 	{
 		if ((*lst_a)->value > median)
 		{
-			pb(lst_a, lst_b);
+			pb(lst_a, lst_b, true);
 			pb_times++;
 		}
 		else

@@ -6,7 +6,7 @@
 /*   By: skock <skock@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 14:38:10 by skock             #+#    #+#             */
-/*   Updated: 2025/01/02 11:16:19 by skock            ###   ########.fr       */
+/*   Updated: 2025/01/04 15:21:01 by skock            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	push_extrememum(t_list **lst_a, t_list **lst_b, t_list min, t_list max)
 		else
 			rra(lst_a, true);
 	}
-	pb(lst_a, lst_b);
+	pb(lst_a, lst_b, true);
 	while ((*lst_a)->value != min.value)
 	{
 		if (min.index <= 3)
@@ -57,15 +57,15 @@ void	push_extrememum(t_list **lst_a, t_list **lst_b, t_list min, t_list max)
 		else
 			rra(lst_a, true);
 	}
-	pb(lst_a, lst_b);
+	pb(lst_a, lst_b, true);
 }
 
 void	pa_modified(t_list **lst_a, t_list **lst_b, t_list max)
 {
-	pa(lst_a, lst_b);
+	pa(lst_a, lst_b, true);
 	if ((*lst_a)->value == max.value)
 		ra(lst_a, true);
-	pa(lst_a, lst_b);
+	pa(lst_a, lst_b, true);
 	if ((*lst_a)->value == max.value)
 		ra(lst_a, true);
 }
