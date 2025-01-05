@@ -3,18 +3,41 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skock <skock@student.42.fr>                +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 13:56:41 by skock             #+#    #+#             */
-/*   Updated: 2025/01/04 18:32:38 by skock            ###   ########.fr       */
+/*   Updated: 2025/01/05 13:47:14 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+void	print_list(t_list *lst_a, t_list *lst_b)
+{
+	t_list	*tmp;
+	tmp = lst_a;
+	ft_printf("liste A : \n\n");
+	while (tmp)
+	{
+		printf("node [%d]: value = %d\n", tmp->index, tmp->value);
+		tmp = tmp->next;
+	}
+	tmp = lst_b;
+	ft_printf("liste B : \n\n");
+	while (tmp)
+	{
+		printf("node [%d]: value = %d\n", tmp->index, tmp->value);
+		tmp = tmp->next;
+	}
+}
 
 void	algo_all(t_list **lst_a, t_list **lst_b)
 {
 	check_sort(*lst_a, 0);
+	if (lst_size(lst_a) == 2)
+	{
+		sa(*lst_a, true);
+		check_sort(*lst_a, 0);
+	}
 	if (lst_size(lst_a) == 3)
 		algo_3(lst_a);
 	else if (lst_size(lst_a) == 5)

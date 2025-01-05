@@ -12,15 +12,26 @@
 
 #include "push_swap.h"
 
+void	free_lst_gnl_error(t_list **lst_a, t_list **lst_b, char *gnl)
+{
+	freetab(&gnl);
+	freelst(*lst_a);
+	freelst(*lst_b);
+	ft_error();
+}
+
 int	check_sort(t_list *lst_a, int order)
 {
 	t_list	*temp;
+	t_list	*free;
 
+	free = lst_a;
 	temp = lst_a->next;
 	while (lst_a->next)
 	{
 		if (lst_a->value > temp->value)
 		{
+			freelst(free);
 			ft_printf("KO\n");
 			return (0);
 		}
@@ -30,7 +41,11 @@ int	check_sort(t_list *lst_a, int order)
 	if (order == 1)
 		return (1);
 	if (order == 2)
+	{
+		freelst(free);
+		freelst(lst_a);
 		ft_printf("OK\n");
+	}
 	return (0);
 }
 
@@ -74,7 +89,8 @@ static void	checker_recup_arguments(t_list **lst_a, t_list **lst_b, char *gnl)
 	else if (ft_strcmp(gnl, "rr\n") == 0)
 		rr(lst_a, lst_b, false);
 	else
-		ft_error();
+		free_lst_gnl_error(lst_a, lst_b, gnl);
+	free(gnl);
 }
 
 void	recup_arg(t_list **lst_a, t_list **lst_b, char *gnl)
@@ -85,7 +101,7 @@ void	recup_arg(t_list **lst_a, t_list **lst_b, char *gnl)
 		if (!gnl)
 			break ;
 		checker_recup_arguments(lst_a, lst_b, gnl);
-		free(gnl);
+		// free(gnl);
 	}
 }
 
@@ -98,14 +114,17 @@ int	main(int ac, char **av)
 
 	lst_a = NULL;
 	lst_b = NULL;
+	if (ac == 1)
+		return (0);
 	if (ac == 2)
 	{
-		ntr = ft_split(av[1], " 	");
+		ntr = ft_split(av[1], ' ');
 		if (lst_fill(&lst_a, ntr, 0) == 1)
 		{
 			freetab(ntr);
 			return (ft_error());
 		}
+		freetab(ntr);
 	}
 	if (ac > 2)
 		if (lst_fill(&lst_a, av, 1) == 1)
