@@ -47,5 +47,6 @@ tester:
 	@wget "https://cdn.intra.42.fr/document/document/28289/checker_linux"
 	chmod 777 checker_linux
 	cd push_swap_tester && make
+	@git clone "https://github.com/o-reo/push_swap_visualizer.git"
 
 .PHONY: all clean fclean re bonus
