@@ -3,32 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: skock <skock@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 13:56:41 by skock             #+#    #+#             */
-/*   Updated: 2025/01/05 13:47:14 by marvin           ###   ########.fr       */
+/*   Updated: 2025/01/06 11:33:09 by skock            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-void	print_list(t_list *lst_a, t_list *lst_b)
-{
-	t_list	*tmp;
-	tmp = lst_a;
-	ft_printf("liste A : \n\n");
-	while (tmp)
-	{
-		printf("node [%d]: value = %d\n", tmp->index, tmp->value);
-		tmp = tmp->next;
-	}
-	tmp = lst_b;
-	ft_printf("liste B : \n\n");
-	while (tmp)
-	{
-		printf("node [%d]: value = %d\n", tmp->index, tmp->value);
-		tmp = tmp->next;
-	}
-}
 
 void	algo_all(t_list **lst_a, t_list **lst_b)
 {

@@ -12,17 +12,9 @@
 
 #include "push_swap.h"
 
-void    free_lst_gnl_error(t_list **lst_a, t_list **lst_b, char *gnl)
+int	check_sort(t_list *lst_a, int order)
 {
-	free(gnl);
-	freelst(*lst_a);
-	freelst(*lst_b);
-	ft_error();
-}
-
-	int    check_sort(t_list *lst_a, int order)
-	{
-	t_list    *temp;
+	t_list	*temp;
 
 	temp = lst_a->next;
 	while (lst_a->next)
@@ -85,8 +77,13 @@ static void	checker_recup_arguments(t_list **lst_a, t_list **lst_b, char *gnl)
 		free_lst_gnl_error(lst_a, lst_b, gnl);
 }
 
-void	recup_arg(t_list **lst_a, t_list **lst_b, char *gnl)
+void	check(t_list **lst_a, t_list **lst_b, char *gnl)
 {
+	if (lst_size(lst_a) == 1)
+	{
+		freelst(*lst_a);
+		exit(1);
+	}
 	while (1)
 	{
 		gnl = get_next_line(0);
@@ -98,6 +95,9 @@ void	recup_arg(t_list **lst_a, t_list **lst_b, char *gnl)
 		checker_recup_arguments(lst_a, lst_b, gnl);
 		free(gnl);
 	}
+	check_sort(*lst_a, 2);
+	freelst(*lst_a);
+	freelst(*lst_b);
 }
 
 int	main(int ac, char **av)
@@ -125,8 +125,5 @@ int	main(int ac, char **av)
 	if (!lst_a)
 		return (0);
 	gnl = NULL;
-	recup_arg(&lst_a, &lst_b, gnl);
-	check_sort(lst_a, 2);
-	freelst(lst_a);
-	freelst(lst_b);
+	check(&lst_a, &lst_b, gnl);
 }

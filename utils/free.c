@@ -6,7 +6,7 @@
 /*   By: skock <skock@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 11:03:29 by skock             #+#    #+#             */
-/*   Updated: 2025/01/04 11:33:38 by skock            ###   ########.fr       */
+/*   Updated: 2025/01/06 11:48:44 by skock            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,12 @@ void	freetab(char **tab)
 		i++;
 	}
 	free(tab);
+}
+
+void	free_lst_gnl_error(t_list **lst_a, t_list **lst_b, char *gnl)
+{
+	free(gnl);
+	freelst(*lst_a);
+	freelst(*lst_b);
+	ft_error();
 }

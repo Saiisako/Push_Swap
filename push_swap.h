@@ -6,7 +6,7 @@
 /*   By: skock <skock@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 13:56:38 by skock             #+#    #+#             */
-/*   Updated: 2025/01/04 15:19:56 by skock            ###   ########.fr       */
+/*   Updated: 2025/01/06 11:48:33 by skock            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ int		lst_size(t_list **lst);
 void	lst_addback(t_list **lst, t_list *new_node);
 void	lst_index_update(t_list **lst);
 void	freelst(t_list *lst);
+void	free_lst_gnl_error(t_list **lst_a, t_list **lst_b, char *gnl);
 //ALGORITHMS
 t_list	*isworth(t_list **lst_b);
 int		bubblesort(t_list *lst, int len);
