@@ -2,10 +2,15 @@ to install my project please do :
 ```bash
 git clone https://github.com/Saiisako/Push_Swap.git
 ```
- 
 First of all to install the tester and visualizer please do :
 ```bash
 make tester
+```
+Once you done that you must :
+```bash
+make
+cd push_swap_tester
+./complexity [sized of list] [iterations] [goal] ../checker_linux
 ```
 
 The visualizer uses C++17, cmake, SFML and ImGui.
